@@ -24,3 +24,15 @@
 .p-bg-color{
     background-color: #1A5F7A;
 }
+.slick-list {
+    height: 500px;
+}
+.slick-arrow{
+    display: none !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .slick-list{
+        height: 100%;
+    }
+  }
