@@ -8,14 +8,14 @@ const BannerSlider = () => {
     dots: true,
     fade: true,
     infinite: true,
-    // autoplay: true,
+    autoplay: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
   return (
     <>
-      <div>
+      <div className="mb-20">
         <Slider {...settings}>
           <div>
             <img
