@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home/Home";
 import AddToy from "../Pages/Home/AddToy/AddToy";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Login/Registration/Registration";
+import AllToys from "../Pages/Home/AllToys/AllToys";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
       {
         path: "/addAToy",
         element: <AddToy></AddToy>,
+      },
+      {
+        path: "/allToys",
+        element: <AllToys></AllToys>,
+        loader: () => fetch("http://localhost:5000/legoSets"),
       },
       {
         path: "/login",
