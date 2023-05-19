@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loggedOut } = useContext(AuthContext);
   const navItem = (
     <>
       <li>
@@ -48,6 +48,13 @@ const Navbar = () => {
       </li>
     </>
   );
+  const handleLogOut = () => {
+    loggedOut()
+      .then()
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   return (
     <div>
       <div className="navbar bg-base-100 main-container">
@@ -86,6 +93,11 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <>
+              <div>
+                <button onClick={handleLogOut} className="btn-p me-5">
+                  Logout
+                </button>
+              </div>
               <div className="avatar">
                 <div
                   title={user?.displayName}
