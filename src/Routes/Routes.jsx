@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Login/Registration/Registration";
 import AllToys from "../Pages/Home/AllToys/AllToys";
 import MyToys from "../Pages/Home/MyToys/MyToys";
+import PrivetRoutes from "./PrivetRoutes";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myToys",
-        element: <MyToys></MyToys>,
+        element: (
+          <PrivetRoutes>
+            <MyToys></MyToys>
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/login",
