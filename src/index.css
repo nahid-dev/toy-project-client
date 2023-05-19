@@ -2,37 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-.main-container{
-    max-width: 1240px;
-    margin: 0 auto;
+.main-container {
+  max-width: 1240px;
+  margin: 0 auto;
 }
 .active {
-    @apply font-medium bg-transparent text-gray-600;
-  }
-  
+  @apply font-medium bg-transparent text-gray-600;
+}
+
 .default {
   @apply tracking-wide text-gray-700;
-  transition: .3s ease-in-out;
-
-
+  transition: 0.3s ease-in-out;
 }
-.default:hover{
-    background-color: transparent;
-    font-weight: 500;
+.default:hover {
+  background-color: transparent;
+  font-weight: 500;
 }
 
-.p-bg-color{
-    background-color: #1A5F7A;
+.p-bg-color {
+  background-color: #1a5f7a;
 }
 .slick-list {
-    height: 500px;
+  height: 500px;
 }
-.slick-arrow{
-    display: none !important;
+.slick-arrow {
+  display: none !important;
 }
-
+.btn-p {
+  @apply bg-[#1A5F7A] text-white md:px-5 md:py-2 px-3 py-1 rounded-md cursor-pointer;
+}
+.btn-p-outline {
+  @apply border border-[#1A5F7A] text-white md:px-5 md:py-2 px-3 py-1 rounded-md cursor-pointer;
+}
 @media only screen and (max-width: 600px) {
-    .slick-list{
-        height: 100%;
-    }
+  .slick-list {
+    height: 100%;
   }
+}
