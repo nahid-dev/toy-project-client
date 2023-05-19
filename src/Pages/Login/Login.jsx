@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import GoogleLogin from "./GoogleLogin/GoogleLogin";
+import { AuthContext } from "../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const [error, setError] = useState("");
+  const { loggedInUser } = useContext(AuthContext);
+
+  const handleLoginButton = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    loggedInUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        setError("");
+        form.reset("");
+        Swal.fire({
+          title: "Success!",
+          text: "Login Successfully!",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+
   return (
     <div>
       <div className="relative flex flex-col justify-center min-h-screen mb-5">
         <div className="w-full p-6 m-auto mt-12 bg-white rounded-md shadow-xl shadow-rose-600/40 lg:max-w-xl">
-          <form className="mt-6">
+          <form onSubmit={handleLoginButton} className="mt-6">
             <div className="mb-2">
               <label className="block text-sm font-semibold text-gray-800">
                 Enter Email
@@ -32,7 +60,7 @@ const Login = () => {
                 required
               />
             </div>
-
+            <p className="text-red-500">{error && error}</p>
             <div className="mt-6 flex justify-center col-span-2">
               <div>
                 <button className=" btn-wide px-4 py-2 tracking-wide text-white transition-colors duration-200 transform p-bg-color rounded-md hover:bg-[#146C94] focus:outline-none focus:bg-purple-600">
