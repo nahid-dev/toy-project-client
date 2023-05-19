@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   const navItem = (
     <>
       <li>
@@ -82,19 +84,24 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navItem}</ul>
         </div>
         <div className="navbar-end">
-          <div className="me-5">
-            <Link to="/login">
-              <button className="btn-p">Login</button>
-            </Link>
-          </div>
-          <div className="avatar">
-            <div
-              title="test"
-              className="w-12 md:w-14 rounded-full ring ring-[#1A5F7A] ring-offset-base-100 ring-offset-2"
-            >
-              {/* <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" /> */}
+          {user ? (
+            <>
+              <div className="avatar">
+                <div
+                  title={user?.displayName}
+                  className="w-12 md:w-14 rounded-full ring ring-[#1A5F7A] ring-offset-base-100 ring-offset-2"
+                >
+                  <img src={user?.photoURL} alt="" />
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="me-5">
+              <Link to="/login">
+                <button className="btn-p">Login</button>
+              </Link>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
