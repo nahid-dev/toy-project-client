@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SingleToy from "./SingleToy";
 
 const AllToys = () => {
   const allToys = useLoaderData();
 
-  console.log(allToys);
   return (
     <div className="main-container">
       <div className="text-center bg-red-100 py-20 mt-5">
@@ -31,7 +30,7 @@ const AllToys = () => {
           <tbody>
             {/* row 1 */}
             {allToys.map((toy) => (
-              <SingleToy key={toy.is} toy={toy}></SingleToy>
+              <SingleToy key={toy._id} toy={toy}></SingleToy>
             ))}
           </tbody>
         </table>
