@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const AddToy = () => {
+  const { user } = useContext(AuthContext);
+
+  const handleAddToyButton = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const toy_name = form.toyName.value;
+    const photoUrl = form.photoURL.value;
+    const seller_name = user?.displayName;
+    const seller_email = user?.email;
+    const sub_category = form.sub_category.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const available_quantity = form.available_quantity.value;
+    const description = form.textarea.value;
+    const toyInfo = {
+      toy_name,
+      photoUrl,
+      seller_name,
+      seller_email,
+      sub_category,
+      price,
+      rating,
+      available_quantity,
+      description,
+    };
+    console.log(toyInfo);
+  };
   return (
     <div className="main-container">
       <div className="text-center bg-red-100 py-20 mt-5">
@@ -12,16 +41,19 @@ const AddToy = () => {
       <div>
         <div className="relative flex flex-col justify-center min-h-screen mb-5">
           <div className="w-full p-6 m-auto mt-12 bg-white rounded-md shadow-xl shadow-rose-600/40 lg:max-w-4xl">
-            <form className="mt-6 grid grid-cols-2 gap-5">
+            <form
+              onSubmit={handleAddToyButton}
+              className="mt-6 grid grid-cols-2 gap-5"
+            >
               <div className="mb-2">
                 <label className="block text-sm font-semibold text-gray-800">
-                  Name
+                  Toy Name
                 </label>
                 <input
                   type="text"
                   className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                   placeholder="Enter Name"
-                  name="name"
+                  name="toyName"
                   required
                 />
               </div>
@@ -44,8 +76,9 @@ const AddToy = () => {
                 <input
                   type="text"
                   className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                  placeholder="Seller Name"
+                  readOnly
                   name="sellerName"
+                  defaultValue={user?.displayName}
                 />
               </div>
               <div className="mb-2">
@@ -56,7 +89,8 @@ const AddToy = () => {
                   type="email"
                   className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                   name="sellerEmail"
-                  placeholder="Seller Email"
+                  readOnly
+                  defaultValue={user?.email}
                 />
               </div>
               <div className="mb-2">
@@ -68,9 +102,9 @@ const AddToy = () => {
                   className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                   required
                 >
-                  <option value="">Lego City</option>
-                  <option value="">Lego Cars</option>
-                  <option value="">Lego Architecture</option>
+                  <option value="Lego City">Lego City</option>
+                  <option value="Lego Cars">Lego Cars</option>
+                  <option value="Lego Architecture">Lego Architecture</option>
                 </select>
               </div>
               <div className="mb-2">
