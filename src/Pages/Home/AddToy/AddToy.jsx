@@ -10,53 +10,127 @@ const AddToy = () => {
       </div>
 
       <div>
-        <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-          <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 lg:max-w-xl">
-            <form className="mt-6">
+        <div className="relative flex flex-col justify-center min-h-screen mb-5">
+          <div className="w-full p-6 m-auto mt-12 bg-white rounded-md shadow-xl shadow-rose-600/40 lg:max-w-4xl">
+            <form className="mt-6 grid grid-cols-2 gap-5">
               <div className="mb-2">
-                <label
-                  for="email"
-                  className="block text-sm font-semibold text-gray-800"
-                >
-                  Email
+                <label className="block text-sm font-semibold text-gray-800">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  placeholder="Enter Name"
+                  name="name"
+                  required
+                />
+              </div>
+              <div className="mb-2">
+                <label className="block text-sm font-semibold text-gray-800">
+                  Picture URL
+                </label>
+                <input
+                  type="url"
+                  className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  placeholder="Picture URL"
+                  name="photoURL"
+                  required
+                />
+              </div>
+              <div className="mb-2">
+                <label className="block text-sm font-semibold text-gray-800">
+                  Seller Name
+                </label>
+                <input
+                  type="text"
+                  className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  placeholder="Seller Name"
+                  name="sellerName"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="block text-sm font-semibold text-gray-800">
+                  Seller Email
                 </label>
                 <input
                   type="email"
                   className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  name="sellerEmail"
+                  placeholder="Seller Email"
                 />
               </div>
               <div className="mb-2">
-                <label
-                  for="password"
-                  className="block text-sm font-semibold text-gray-800"
+                <label className="block text-sm font-semibold text-gray-800">
+                  Sub-Category
+                </label>
+                <select
+                  name="sub_category"
+                  className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  required
                 >
-                  Password
+                  <option value="">Lego City</option>
+                  <option value="">Lego Cars</option>
+                  <option value="">Lego Architecture</option>
+                </select>
+              </div>
+              <div className="mb-2">
+                <label className="block text-sm font-semibold text-gray-800">
+                  Price
                 </label>
                 <input
-                  type="password"
+                  type="text"
                   className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  placeholder="Price"
+                  required
+                  name="price"
                 />
               </div>
-              <a href="#" className="text-xs text-purple-600 hover:underline">
-                Forget Password?
-              </a>
-              <div className="mt-6">
-                <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-                  Login
-                </button>
+              <div className="mb-2">
+                <label className="block text-sm font-semibold text-gray-800">
+                  Rating
+                </label>
+                <input
+                  type="number"
+                  className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  placeholder="rating"
+                  name="rating"
+                  required
+                />
+              </div>
+              <div className="mb-2">
+                <label className="block text-sm font-semibold text-gray-800">
+                  Available Quantity
+                </label>
+                <input
+                  type="number"
+                  className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  placeholder="Available Quantity"
+                  name="available_quantity"
+                  required
+                />
+              </div>
+
+              <div className="mb-2 col-span-2">
+                <label className="block text-sm font-semibold text-gray-800">
+                  Details Description
+                </label>
+                <textarea
+                  className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  name="textarea"
+                  type="text"
+                  id=""
+                  cols="30"
+                  rows="5"
+                ></textarea>
+              </div>
+              <div className="mt-6 flex justify-center col-span-2">
+                <div>
+                  <button className=" btn-wide px-4 py-2 tracking-wide text-white transition-colors duration-200 transform p-bg-color rounded-md hover:bg-[#146C94] focus:outline-none focus:bg-purple-600">
+                    Add Toy
+                  </button>
+                </div>
               </div>
             </form>
-
-            <p className="mt-8 text-xs font-light text-center text-gray-700">
-              {" "}
-              Don't have an account?{" "}
-              <a
-                href="#"
-                className="font-medium text-purple-600 hover:underline"
-              >
-                Sign up
-              </a>
-            </p>
           </div>
         </div>
       </div>

@@ -8,6 +8,11 @@ const images = [
   "https://i.ibb.co/vPwqkS3/vlad-hilitanu-1-FI2-QAYPa-Y-unsplash.jpg",
   "https://i.ibb.co/vPwqkS3/vlad-hilitanu-1-FI2-QAYPa-Y-unsplash.jpg",
   "https://i.ibb.co/zJH47zJ/daniel-k-cheung-B7-N0-Iji-IJYo-unsplash.jpg",
+
+  "https://i.ibb.co/vPwqkS3/vlad-hilitanu-1-FI2-QAYPa-Y-unsplash.jpg",
+  "https://i.ibb.co/KNrqhSh/nik-5dg-Hxsv-J170-unsplash.jpg",
+
+  //...
 ];
 
 const Gallery = () => {
@@ -20,7 +25,7 @@ const Gallery = () => {
           accusamus!
         </p>
       </div>
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
         <Masonry gutter="10px">
           {images.map((image, i) => (
             <img
