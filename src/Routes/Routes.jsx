@@ -10,11 +10,14 @@ import PrivetRoutes from "./PrivetRoutes";
 import Blogs from "../Pages/Home/Blogs/Blogs";
 import UpdateToys from "../Pages/Home/MyToys/UpdateToys";
 import ToyDetails from "../Pages/Home/AllToys/ToyDetails";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage></ErrorPage>,
     element: <Mainpage></Mainpage>,
+
     children: [
       {
         path: "/",
@@ -22,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addAToy",
-        element: <AddToy></AddToy>,
+        element: (
+          <PrivetRoutes>
+            <AddToy></AddToy>
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/allToys",
@@ -31,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/toyDetails/:id",
-        element: <ToyDetails></ToyDetails>,
+        element: (
+          <PrivetRoutes>
+            <ToyDetails></ToyDetails>
+          </PrivetRoutes>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/legoSets/${params.id}`),
       },
