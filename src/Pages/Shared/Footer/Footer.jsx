@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <>
+    <div className="main-container">
       <footer className="footer p-10 bg-base-200 text-base-content">
         <div>
           <Link to="/" className="text-xl w-12 h-12 md:w-16 md:h-16 ">
@@ -36,7 +36,7 @@ const Footer = () => {
           <a className="link link-hover">Cookie policy</a>
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 
