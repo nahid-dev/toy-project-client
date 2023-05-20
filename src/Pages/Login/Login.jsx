@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "./GoogleLogin/GoogleLogin";
 import { AuthContext } from "../Providers/AuthProviders";
 import Swal from "sweetalert2";
@@ -7,6 +7,10 @@ import Swal from "sweetalert2";
 const Login = () => {
   const [error, setError] = useState("");
   const { loggedInUser } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  console.log(from);
+  const navigate = useNavigate();
 
   const handleLoginButton = (e) => {
     e.preventDefault();
@@ -19,6 +23,7 @@ const Login = () => {
         const loggedUser = result.user;
         setError("");
         form.reset("");
+        navigate(from, { replace: true });
         Swal.fire({
           title: "Success!",
           text: "Login Successfully!",
