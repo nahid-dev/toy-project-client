@@ -7,7 +7,7 @@ const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
   const { user } = useContext(AuthContext);
 
-  console.log(myToys);
+  // console.log(myToys);
 
   useEffect(() => {
     fetch(`http://localhost:5000/legoSets?seller_email=${user?.email}`)

@@ -8,6 +8,8 @@ import AllToys from "../Pages/Home/AllToys/AllToys";
 import MyToys from "../Pages/Home/MyToys/MyToys";
 import PrivetRoutes from "./PrivetRoutes";
 import Blogs from "../Pages/Home/Blogs/Blogs";
+import UpdateToys from "../Pages/Home/MyToys/UpdateToys";
+import ToyDetails from "../Pages/Home/AllToys/ToyDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,12 +30,24 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:5000/legoSets"),
       },
       {
+        path: "/toyDetails/:id",
+        element: <ToyDetails></ToyDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/legoSets/${params.id}`),
+      },
+      {
         path: "/myToys",
         element: (
           <PrivetRoutes>
             <MyToys></MyToys>
           </PrivetRoutes>
         ),
+      },
+      {
+        path: "/updateToys/:id",
+        element: <UpdateToys></UpdateToys>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/legoSets/${params.id}`),
       },
       {
         path: "/blogs",

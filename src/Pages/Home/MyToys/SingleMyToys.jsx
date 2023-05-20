@@ -26,7 +26,7 @@ const SingleMyToys = ({ toy, handleDeleteToy }) => {
         <td className="text-center">{available_quantity}</td>
         <td className="text-center space-x-2">
           <span>
-            <Link>
+            <Link to={`/updateToys/${_id}`}>
               <button className="btn btn-circle btn-outline">
                 <FaPencilAlt></FaPencilAlt>
               </button>
