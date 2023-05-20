@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAGhsV90BWds57EaSUVRk4y-Nf9UsGKM5g",
-  authDomain: "lego-set-ass-11.firebaseapp.com",
-  projectId: "lego-set-ass-11",
-  storageBucket: "lego-set-ass-11.appspot.com",
-  messagingSenderId: "293981325029",
-  appId: "1:293981325029:web:3ce7f59e9190458c8c760c",
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
