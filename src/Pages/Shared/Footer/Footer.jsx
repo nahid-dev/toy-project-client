@@ -12,7 +12,7 @@ const Footer = () => {
           <p>
             LEGO Industries Ltd.
             <br />
-            Providing reliable tech since 1980
+            &copy; 2023 Nahid.dev all rights reserved.
           </p>
         </div>
         <div>

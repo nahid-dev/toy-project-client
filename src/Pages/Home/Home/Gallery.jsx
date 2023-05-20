@@ -25,7 +25,10 @@ const Gallery = () => {
           accusamus!
         </p>
       </div>
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
+      <ResponsiveMasonry
+        style={{ margin: "10px" }}
+        columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}
+      >
         <Masonry gutter="10px">
           {images.map((image, i) => (
             <img
