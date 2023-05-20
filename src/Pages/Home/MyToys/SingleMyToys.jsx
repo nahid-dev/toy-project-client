@@ -2,17 +2,16 @@ import React from "react";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const SingleMyToys = ({ toy }) => {
+const SingleMyToys = ({ toy, handleDeleteToy }) => {
   const {
     toy_name,
-    photoUrl,
+    _id,
     seller_name,
     seller_email,
     sub_category,
     price,
     rating,
     available_quantity,
-    description,
   } = toy;
   return (
     <>
@@ -35,7 +34,10 @@ const SingleMyToys = ({ toy }) => {
           </span>
           <span>
             <Link>
-              <button className="btn btn-circle btn-outline">
+              <button
+                onClick={() => handleDeleteToy(_id)}
+                className="btn btn-circle btn-outline"
+              >
                 <FaTrashAlt></FaTrashAlt>
               </button>
             </Link>

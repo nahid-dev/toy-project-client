@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import SingleMyToys from "./SingleMyToys";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
@@ -15,6 +16,32 @@ const MyToys = () => {
         setMyToys(data);
       });
   }, []);
+
+  const handleDeleteToy = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/legoSets/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+            const remaining = myToys.filter((toy) => toy._id !== id);
+            setMyToys(remaining);
+          });
+      }
+    });
+  };
   return (
     <div className="main-container">
       <div className="text-center bg-red-100 py-20 mt-5">
@@ -38,7 +65,11 @@ const MyToys = () => {
           </thead>
           <tbody>
             {myToys.map((toy) => (
-              <SingleMyToys key={toy._id} toy={toy}></SingleMyToys>
+              <SingleMyToys
+                key={toy._id}
+                toy={toy}
+                handleDeleteToy={handleDeleteToy}
+              ></SingleMyToys>
             ))}
           </tbody>
         </table>
