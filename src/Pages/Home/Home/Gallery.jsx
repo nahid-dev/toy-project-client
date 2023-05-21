@@ -18,7 +18,7 @@ const images = [
 const Gallery = () => {
   return (
     <div className="main-container my-10">
-      <div className="my-10 text-center">
+      <div className="my-10 text-center" data-aos="fade-right">
         <h2 className="md:text-4xl text-3xl font-bold mb-3">Image Gallery</h2>
         <p className="text-gray-500">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere,
@@ -32,6 +32,7 @@ const Gallery = () => {
         <Masonry gutter="10px">
           {images.map((image, i) => (
             <img
+              data-aos="fade-up"
               key={i}
               src={image}
               style={{ width: "100%", display: "block" }}

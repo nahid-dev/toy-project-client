@@ -4,8 +4,16 @@ import "react-tabs/style/react-tabs.css";
 import ToyCity from "./ToyCity";
 import ToyCars from "./ToyCars";
 import ToyArchitecture from "./ToyArchitecture";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 const HomeTab = () => {
   const [tabToys, setTabToys] = useState([]);
+
+  // Aos effect
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   //   console.log(tabToys);
   useEffect(() => {
@@ -23,7 +31,7 @@ const HomeTab = () => {
 
   return (
     <div className="main-container my-10 py-10 text-center">
-      <div className="my-10 text-center">
+      <div className="my-10 text-center" data-aos="fade-up">
         <h2 className="md:text-4xl text-3xl font-bold mb-3">
           Shop by Category
         </h2>
@@ -34,28 +42,37 @@ const HomeTab = () => {
       </div>
 
       <Tabs>
-        <TabList>
+        <TabList data-aos="fade-up">
           <Tab>Lego City</Tab>
           <Tab>Lego Cars</Tab>
           <Tab>Lego Architecture</Tab>
         </TabList>
 
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5 gap-y-4">
+          <div
+            className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5 gap-y-4"
+            data-aos="fade-up"
+          >
             {legoCity.slice(0, 3).map((legoCity) => (
               <ToyCity key={legoCity._id} legoCity={legoCity}></ToyCity>
             ))}
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
+          <div
+            className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5"
+            data-aos="fade-up"
+          >
             {legoCars.slice(0, 3).map((legoCar) => (
               <ToyCars key={legoCar._id} legoCar={legoCar}></ToyCars>
             ))}
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
+          <div
+            className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5"
+            data-aos="fade-up"
+          >
             {legoArchitecture.slice(0, 3).map((legoArch) => (
               <ToyArchitecture
                 key={legoArch._id}

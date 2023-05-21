@@ -2,11 +2,17 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import SingleMyToys from "./SingleMyToys";
 import Swal from "sweetalert2";
+import useTitle from "../../../hooks/useTitile";
+import { useLoaderData } from "react-router-dom";
 
 const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
   const { user } = useContext(AuthContext);
+  useTitle("my toys");
+  const allToys = useLoaderData();
+  const { price } = allToys;
 
+  const p = parseInt(price);
   // console.log(myToys);
 
   useEffect(() => {
@@ -46,6 +52,18 @@ const MyToys = () => {
     <div className="main-container">
       <div className="text-center bg-red-100 py-20 mt-5">
         <h3 className="font-light md:text-4xl text-3xl">Only My Toys 🚒</h3>
+      </div>
+
+      <div className="flex justify-center mt-10">
+        <div>
+          <select className="select w-full max-w-xs  bg-gray-100">
+            <option disabled selected>
+              Pick your favorite Simpson
+            </option>
+            <option>Homer</option>
+            <option>Marge</option>
+          </select>
+        </div>
       </div>
 
       <div className="overflow-x-auto my-10">

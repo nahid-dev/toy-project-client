@@ -4,10 +4,12 @@ import GoogleLogin from "../GoogleLogin/GoogleLogin";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../../hooks/useTitile";
 
 const Registration = () => {
   const [error, setError] = useState("");
   const { createUser } = useContext(AuthContext);
+  useTitle("Register");
 
   const handleRegistration = (e) => {
     e.preventDefault();

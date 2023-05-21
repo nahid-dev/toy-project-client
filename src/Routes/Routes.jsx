@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/allToys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/legoSets"),
+        // loader: () => fetch("http://localhost:5000/legoSets?limit=5&page=1"),
       },
       {
         path: "/toyDetails/:id",
@@ -53,6 +53,7 @@ const router = createBrowserRouter([
             <MyToys></MyToys>
           </PrivetRoutes>
         ),
+        loader: () => fetch("http://localhost:5000/legoSets"),
       },
       {
         path: "/updateToys/:id",

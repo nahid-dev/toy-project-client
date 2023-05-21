@@ -21,7 +21,7 @@ const SingleMyToys = ({ toy, handleDeleteToy }) => {
         <td>{seller_email}</td>
         <td>{sub_category}</td>
         <td>
-          <span>{price}</span> | <span>{rating}</span>
+          <span>$ {price}</span> | <span>{rating}</span>
         </td>
         <td className="text-center">{available_quantity}</td>
         <td className="text-center space-x-2">

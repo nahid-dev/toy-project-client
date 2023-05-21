@@ -1,9 +1,29 @@
-import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import SingleToy from "./SingleToy";
+import useTitle from "../../../hooks/useTitile";
 
 const AllToys = () => {
-  const allToys = useLoaderData();
+  const [allToys, setAllToys] = useState([]);
+  const [loading, setLoading] = useState(false);
+  // const allToys = useLoaderData();
+
+  useTitle("all toys");
+
+  if (loading) {
+    return (
+      <div className="main-container flex justify-center">
+        <button className="btn loading ">loading</button>;
+      </div>
+    );
+  }
+  useEffect(() => {
+    fetch("http://localhost:5000/legoSets?limit=3&page=1")
+      .then((res) => res.json())
+      .then((data) => {
+        setAllToys(data);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div className="main-container">
@@ -13,6 +33,36 @@ const AllToys = () => {
         </h3>
       </div>
 
+      {/* Search Field here */}
+      <div className="text-center flex justify-center my-10">
+        <div>
+          <div className="form-control">
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder=" Toy Name"
+                className="input input-bordered"
+              />
+              <button className="btn btn-square">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* All Toys List */}
       <div className="overflow-x-auto w-full my-20">
         <table className="table w-full">
@@ -34,6 +84,14 @@ const AllToys = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      {/* pagination */}
+      <div className="flex justify-center my-5">
+        <div className="btn-group shadow-orange-50 shadow-lg">
+          <button className="btn">«</button>
+          <button className="btn">Page 22</button>
+          <button className="btn">»</button>
+        </div>
       </div>
     </div>
   );
