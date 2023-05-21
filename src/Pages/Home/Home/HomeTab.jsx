@@ -17,7 +17,7 @@ const HomeTab = () => {
 
   //   console.log(tabToys);
   useEffect(() => {
-    fetch("http://localhost:5000/legoSets")
+    fetch("https://assignment-11-server-drab.vercel.app/legoSets")
       .then((res) => res.json())
       .then((data) => setTabToys(data));
   }, []);

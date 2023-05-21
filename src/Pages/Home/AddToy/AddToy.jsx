@@ -33,7 +33,7 @@ const AddToy = () => {
     };
     console.log(toyInfo);
     // Send data to the server
-    fetch("http://localhost:5000/legoSets", {
+    fetch("https://assignment-11-server-drab.vercel.app/legoSets", {
       method: "POST",
       headers: {
         "content-type": "application/json",

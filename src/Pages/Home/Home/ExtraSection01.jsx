@@ -6,10 +6,7 @@ const ExtraSection01 = () => {
   const { user } = useContext(AuthContext);
   return (
     <div className="main-container">
-      <div
-        className="stats stats-vertical lg:stats-horizontal shadow-xl my-10 w-full text-center"
-        data-aos="fade-up"
-      >
+      <div className="stats stats-vertical lg:stats-horizontal shadow-xl mt-20 w-full text-center">
         <div className="stat">
           <div className="stat-title">Downloads</div>
           <div className="stat-value flex justify-center">

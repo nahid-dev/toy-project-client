@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const ToyCity = ({ legoCity }) => {
+  const { user } = useContext(AuthContext);
+
   const { photoUrl, toy_name, price, rating, _id } = legoCity;
+
+  const handleToyDetailsBtn = () => {
+    if (!user) {
+      Swal.fire({
+        icon: "Not Login",
+        title: "Oops...",
+        text: "Please Login first!",
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
+    }
+  };
   return (
     <>
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -15,7 +30,9 @@ const ToyCity = ({ legoCity }) => {
           <p className="font-bold text-left">Rating: {rating}</p>
           <div className="card-actions justify-end">
             <Link to={`/toyDetails/${_id}`}>
-              <button className="btn-p">View Details</button>
+              <button onClick={handleToyDetailsBtn} className="btn-p">
+                View Details
+              </button>
             </Link>
           </div>
         </div>

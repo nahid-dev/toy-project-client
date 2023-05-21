@@ -39,8 +39,8 @@ const UpdateToys = () => {
       description,
     };
     console.log(updateToyInfo);
-    // Udate data to the server
-    fetch(`http://localhost:5000/legoSets/${_id}`, {
+    // Update data to the server
+    fetch(`https://assignment-11-server-drab.vercel.app/legoSets/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -83,7 +83,7 @@ const UpdateToys = () => {
                   placeholder="Price"
                   required
                   name="price"
-                  defaultValue={updateToyData.price}
+                  defaultValue={price}
                 />
               </div>
               <div className="mb-2">

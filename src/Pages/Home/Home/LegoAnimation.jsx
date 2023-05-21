@@ -5,25 +5,13 @@ import Lottie from "lottie-react";
 const LegoAnimation = () => {
   return (
     <div className="main-container my-10">
-      {/* <div className="card lg:card-side bg-base-100 shadow-xl">
-        <figure>
-          <Lottie animationData={legoAnimation}></Lottie>
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">New album is released!</h2>
-          <p>Click the button to listen on Spotiwhy app.</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Listen</button>
-          </div>
-        </div>
-      </div> */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="w-full" data-aos="fade-right">
+        <div className="w-full" data-aos="fade-down">
           <Lottie animationData={legoAnimation}></Lottie>
         </div>
         <div
           className="flex items-center md:ms-5 justify-center"
-          data-aos="fade-left"
+          data-aos="fade-up"
         >
           <div className="px-5 md:px-0">
             <h2 className="text-2xl md:text-4xl font-bold mb-5">

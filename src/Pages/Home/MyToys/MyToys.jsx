@@ -3,20 +3,16 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import SingleMyToys from "./SingleMyToys";
 import Swal from "sweetalert2";
 import useTitle from "../../../hooks/useTitile";
-import { useLoaderData } from "react-router-dom";
 
 const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
   const { user } = useContext(AuthContext);
   useTitle("my toys");
-  const allToys = useLoaderData();
-  const { price } = allToys;
-
-  const p = parseInt(price);
-  // console.log(myToys);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/legoSets?seller_email=${user?.email}`)
+    fetch(
+      `https://assignment-11-server-drab.vercel.app/legoSets?seller_email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);
@@ -34,7 +30,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/legoSets/${id}`, {
+        fetch(`https://assignment-11-server-drab.vercel.app/legoSets/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

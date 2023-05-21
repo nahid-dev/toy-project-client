@@ -34,7 +34,6 @@ const router = createBrowserRouter([
       {
         path: "/allToys",
         element: <AllToys></AllToys>,
-        // loader: () => fetch("http://localhost:5000/legoSets?limit=5&page=1"),
       },
       {
         path: "/toyDetails/:id",
@@ -44,7 +43,9 @@ const router = createBrowserRouter([
           </PrivetRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/legoSets/${params.id}`),
+          fetch(
+            `https://assignment-11-server-drab.vercel.app/legoSets/${params.id}`
+          ),
       },
       {
         path: "/myToys",
@@ -53,13 +54,14 @@ const router = createBrowserRouter([
             <MyToys></MyToys>
           </PrivetRoutes>
         ),
-        loader: () => fetch("http://localhost:5000/legoSets"),
       },
       {
         path: "/updateToys/:id",
         element: <UpdateToys></UpdateToys>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/legoSets/${params.id}`),
+          fetch(
+            `https://assignment-11-server-drab.vercel.app/legoSets/${params.id}`
+          ),
       },
       {
         path: "/blogs",

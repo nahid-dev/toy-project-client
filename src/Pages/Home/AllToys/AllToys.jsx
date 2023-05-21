@@ -5,7 +5,8 @@ import useTitle from "../../../hooks/useTitile";
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const allToys = useLoaderData();
+  const [searchText, setSearchText] = useState("");
+  const [showAll, setShowAll] = useState(false);
 
   useTitle("all toys");
 
@@ -17,13 +18,23 @@ const AllToys = () => {
     );
   }
   useEffect(() => {
-    fetch("http://localhost:5000/legoSets?limit=3&page=1")
+    fetch(`https://assignment-11-server-drab.vercel.app/legoSets`)
       .then((res) => res.json())
       .then((data) => {
         setAllToys(data);
         setLoading(false);
       });
   }, []);
+
+  const handleSearchBtn = () => {
+    fetch(
+      `https://assignment-11-server-drab.vercel.app/searchByText/${searchText}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setAllToys(data);
+      });
+  };
 
   return (
     <div className="main-container">
@@ -42,8 +53,9 @@ const AllToys = () => {
                 type="text"
                 placeholder=" Toy Name"
                 className="input input-bordered"
+                onChange={(e) => setSearchText(e.target.value)}
               />
-              <button className="btn btn-square">
+              <button onClick={handleSearchBtn} className="btn btn-square">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -79,20 +91,20 @@ const AllToys = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {allToys.map((toy) => (
+            {allToys.slice(0, showAll ? 1000 : 20).map((toy) => (
               <SingleToy key={toy._id} toy={toy}></SingleToy>
             ))}
           </tbody>
         </table>
       </div>
       {/* pagination */}
-      <div className="flex justify-center my-5">
-        <div className="btn-group shadow-orange-50 shadow-lg">
-          <button className="btn">«</button>
-          <button className="btn">Page 22</button>
-          <button className="btn">»</button>
+      {showAll || (
+        <div className="flex justify-center my-5">
+          <button onClick={() => setShowAll(true)} className="btn-p">
+            Show All
+          </button>
         </div>
-      </div>
+      )}
     </div>
   );
 };
